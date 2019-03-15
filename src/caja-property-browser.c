@@ -1239,7 +1239,7 @@ add_pattern_to_browser (GtkDialog *dialog, gint response_id, gpointer *data)
     char *user_directory;
     GFile *dest, *selected;
 
-    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER (data);
+    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER (*data);
 
     if (response_id != GTK_RESPONSE_ACCEPT)
     {
@@ -1411,7 +1411,7 @@ add_color_to_browser (GtkWidget *widget, gint which_button, gpointer *data)
     const char *color_name;
     char *stripped_color_name;
 
-    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER (data);
+    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER (*data);
 
     if (which_button == GTK_RESPONSE_OK)
     {
@@ -1447,7 +1447,7 @@ static void
 show_color_selection_window (GtkWidget *widget, gpointer *data)
 {
     GdkColor color;
-    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER(data);
+    CajaPropertyBrowser *property_browser = CAJA_PROPERTY_BROWSER (*data);
 
     gtk_color_selection_get_current_color (GTK_COLOR_SELECTION
                                            (gtk_color_selection_dialog_get_color_selection (GTK_COLOR_SELECTION_DIALOG (property_browser->details->colors_dialog))),
