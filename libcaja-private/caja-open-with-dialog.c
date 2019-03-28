@@ -247,7 +247,7 @@ add_or_find_application (CajaOpenWithDialog *dialog)
         }
     }
 
-    if (app == NULL)
+    if ((app == NULL) && (error))
     {
         message = g_strdup_printf (_("Could not add application to the application database: %s"), error->message);
         eel_show_error_dialog (_("Could not add application"),
