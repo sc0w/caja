@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="https://github.com/mate-desktop/mate-icon-theme/raw/master/mate/16x16/apps/system-file-manager.png" />
+  <title>caja Code Analyzer results</title>
+</head>
+<body>
+<h1>
+  <a href="https://github.com/mate-desktop">mate-desktop</a>/<a href="https://github.com/mate-desktop/caja">caja</a> Static analyzer results
+</h1>
+  <a href="https://github.com/mate-desktop/caja" title="Github"><i class="fa fa-github fa-2x"></i>GitHub</a>
+  <a href="https://travis-ci.org/mate-desktop/caja/builds/512700357" title="Travis CI"><img src="https://travis-ci.org/mate-desktop/caja.svg?branch=master" alt="Build Status" /></a>
+<hr/>
+Commit: <a href="https://github.com/mate-desktop/caja/commit/a35b7cedb72e29a9644433bb5cf9e822885234fd">a35b7cedb72e29a9644433bb5cf9e822885234fd</a><br/>
+Compare: <a href="https://github.com/mate-desktop/caja/compare/"></a><br/>
+Branch: <a href="https://github.com/mate-desktop/caja/tree/clang_fileoperationsnull">clang_fileoperationsnull</a><br/>
+Time: 2019-03-28 21:10:07+00:00<br/>
+Messages:<br/>
+<pre>
+caja-file-operations: make sure 'error' isn't NULL
+
+Fixes Clang static analyzer warnings:
+
+caja-file-operations.c:2165:7: warning: Access to field 'code' results in a dereference of a null pointer (loaded from variable 'error')
+                if (error->code != G_IO_ERROR_FAILED_HANDLED) {
+                    ^~~~~~~~~~~
+
+caja-file-operations.c:5448:14: warning: Access to field 'message' results in a dereference of a null pointer (loaded from variable 'error')
+                        details = error->message;
+                                  ^~~~~~~~~~~~~~
+</pre>
+<hr/>
+<ul>
+<li><a href=2019-03-28-210110-7181-1@a35b7cedb72e_clang_fileoperationsnull>2019-03-28-210110-7181-1@a35b7cedb72e_clang_fileoperationsnull</a></li>
+<li><a href=2019-03-28-123250-7183-1@8cc8e9b16f52_clang_openwithdialog>2019-03-28-123250-7183-1@8cc8e9b16f52_clang_openwithdialog</a></li>
+<li><a href=2019-03-28-030123-7185-1@6b9bed243b88_master>2019-03-28-030123-7185-1@6b9bed243b88_master</a></li>
+<li><a href=2019-03-26-110423-7194-1@22ca5d603739_master>2019-03-26-110423-7194-1@22ca5d603739_master</a></li>
+<li><a href=2019-03-08-235618-7246-1@a301718c24ad_cajafile_identicalbranches>2019-03-08-235618-7246-1@a301718c24ad_cajafile_identicalbranches</a></li>
+<li><a href=2019-03-08-221954-7247-1@dee22808db8c_fileoperations_mem>2019-03-08-221954-7247-1@dee22808db8c_fileoperations_mem</a></li>
+<li><a href=2019-03-08-082743-7247-1@bdceb0f13d5b_master>2019-03-08-082743-7247-1@bdceb0f13d5b_master</a></li>
+<li><a href=2019-03-08-022833-7246-1@54a7b1a706f0_clang-analyzer>2019-03-08-022833-7246-1@54a7b1a706f0_clang-analyzer</a></li>
+<li><a href=2019-03-07-033519-7247-1@2197e3338233_clang-analyzer>2019-03-07-033519-7247-1@2197e3338233_clang-analyzer</a></li>
+</ul>
+</body>
+</html>
