@@ -3207,8 +3207,10 @@ editable_insert_text (GtkEditable *editable,
     EelEditableLabel *label = EEL_EDITABLE_LABEL (editable);
     gint index;
 
-    if (new_text_length < 0)
+    if (new_text_length < 0) {
+        g_assert (strchr(new_text, "\0") != NULL)
         new_text_length = strlen (new_text);
+    }
 
     index = g_utf8_offset_to_pointer (label->text, *position) - label->text;
 
