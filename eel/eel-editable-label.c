@@ -2402,7 +2402,7 @@ eel_editable_label_preedit_changed_cb (GtkIMContext *context,
     gtk_im_context_get_preedit_string (label->im_context,
                                        &preedit_string, NULL,
                                        &cursor_pos);
-    label->preedit_length = strlen (preedit_string);
+    label->preedit_length = strnlen (preedit_string, sizeof (preedit_string));
     cursor_pos = CLAMP (cursor_pos, 0, g_utf8_strlen (preedit_string, -1));
     label->preedit_cursor = cursor_pos;
     g_free (preedit_string);
@@ -2417,7 +2417,7 @@ eel_editable_label_retrieve_surrounding_cb (GtkIMContext *context,
 {
     gtk_im_context_set_surrounding (context,
                                     label->text,
-                                    strlen (label->text) + 1,
+                                    strnlen (label->text, sizeof (label->text)) + 1,
                                     label->selection_end);
 
     return TRUE;
@@ -2777,7 +2777,7 @@ eel_editable_label_move_cursor (EelEditableLabel    *label,
         case GTK_MOVEMENT_PARAGRAPH_ENDS:
         case GTK_MOVEMENT_BUFFER_ENDS:
             /* FIXME: Can do better here */
-            new_pos = count < 0 ? 0 : strlen (label->text);
+            new_pos = count < 0 ? 0 : strnlen (label->text, sizeof (label->text));
             break;
         case GTK_MOVEMENT_DISPLAY_LINES:
             new_pos = eel_editable_label_move_line (label, new_pos, count);
@@ -2963,7 +2963,7 @@ paste_received (GtkClipboard *clipboard,
 
         tmp_pos = g_utf8_pointer_to_offset (label->text,
                                             label->text + label->selection_anchor);
-        gtk_editable_insert_text (GTK_EDITABLE (label), text, strlen (text), &tmp_pos);
+        gtk_editable_insert_text (GTK_EDITABLE (label), text, strnlen (text, sizeof (text)), &tmp_pos);
         tmp_pos = g_utf8_offset_to_pointer (label->text, tmp_pos) - label->text;
         eel_editable_label_select_region_index (label, tmp_pos, tmp_pos);
     }
@@ -3208,7 +3208,7 @@ editable_insert_text (GtkEditable *editable,
     gint index;
 
     if (new_text_length < 0)
-        new_text_length = strlen (new_text);
+        new_text_length = strnlen (new_text, sizeof (new_text));
 
     index = g_utf8_offset_to_pointer (label->text, *position) - label->text;
 
